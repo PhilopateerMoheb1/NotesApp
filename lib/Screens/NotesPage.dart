@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../Widgets/CustomIcon.dart';
+
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
   static const String id = "NotesPage";
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text("Notes"),
+        elevation: 0,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: CustomIcon(
+              icon: Icon(
+                Icons.search,
+                size: 28,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
