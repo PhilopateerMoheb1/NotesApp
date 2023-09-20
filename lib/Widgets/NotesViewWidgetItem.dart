@@ -7,10 +7,12 @@ class NotesViewWidgetItem extends StatelessWidget {
     super.key,
     required this.title,
     this.subtitle,
+    this.color,
   });
 
   final String title;
   final String? subtitle;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,9 @@ class NotesViewWidgetItem extends StatelessWidget {
         vertical: 10,
       ),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xffffcc80),
-          borderRadius: BorderRadius.all(
+        decoration: BoxDecoration(
+          color: color ?? Colors.red,
+          borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
         ),
