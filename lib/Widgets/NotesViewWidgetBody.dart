@@ -5,7 +5,12 @@ import 'package:intl/intl.dart';
 class NotesViewWidgetBody extends StatelessWidget {
   const NotesViewWidgetBody({
     super.key,
+    required this.title,
+    this.subtitle,
   });
+
+  final String title;
+  final String? subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +31,9 @@ class NotesViewWidgetBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                "Philo",
-                style: TextStyle(
+              title: Text(
+                title,
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 26,
                 ),
@@ -39,7 +44,7 @@ class NotesViewWidgetBody extends StatelessWidget {
                   bottom: 10,
                 ),
                 child: Text(
-                  "Philo",
+                  subtitle ?? " ",
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black.withOpacity(.4),

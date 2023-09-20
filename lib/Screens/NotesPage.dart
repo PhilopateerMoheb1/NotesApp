@@ -27,7 +27,10 @@ class NotesPage extends StatelessWidget {
           ),
         ],
       ),
-      body: const NotesViewWidgetBody(),
+      body: const NotesViewWidgetBody(
+        title: 'Philo',
+        subtitle: "Philoooooooooooooooooooooo",
+      ),
     );
   }
 }
