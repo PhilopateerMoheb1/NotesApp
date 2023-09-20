@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../Widgets/CustomIcon.dart';
+import '../Widgets/NotesViewWidgetBody.dart';
 
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
@@ -25,6 +27,7 @@ class NotesPage extends StatelessWidget {
           ),
         ],
       ),
+      body: const NotesViewWidgetBody(),
     );
   }
 }

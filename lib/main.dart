@@ -18,6 +18,7 @@ class NotesApp extends StatelessWidget {
       },
       initialRoute: NotesPage.id,
       theme: ThemeData(
+        fontFamily: 'Poppins',
         brightness: Brightness.dark,
       ),
     );
