@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:notesapp/Widgets/NotesListView.dart';
 
 import '../Widgets/CustomIcon.dart';
-import '../Widgets/NotesViewWidgetBody.dart';
+import '../Widgets/NotesViewWidgetItem.dart';
 
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
@@ -27,9 +28,10 @@ class NotesPage extends StatelessWidget {
           ),
         ],
       ),
-      body: const NotesViewWidgetBody(
-        title: 'Philo',
-        subtitle: "Philoooooooooooooooooooooo",
+      body: const Column(
+        children: [
+          NotesListView(),
+        ],
       ),
     );
   }
