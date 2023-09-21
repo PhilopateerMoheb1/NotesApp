@@ -11,21 +11,9 @@ class EditPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text("Notes"),
-        elevation: 0,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: CustomIcon(
-              icon: Icon(
-                Icons.done,
-                size: 28,
-              ),
-            ),
-          ),
-        ],
+      appBar: buildAppBar(
+        "Edit Page",
+        Icons.done,
       ),
       body: const TextFieldFormWidget(
         firstTextFieldHintText: "Title",
@@ -34,4 +22,23 @@ class EditPageView extends StatelessWidget {
       ),
     );
   }
+}
+
+AppBar buildAppBar(String name, IconData iconData) {
+  return AppBar(
+    backgroundColor: Colors.transparent,
+    title: Text(name),
+    elevation: 0,
+    actions: [
+      Padding(
+        padding: const EdgeInsets.only(right: 20.0),
+        child: CustomIcon(
+          icon: Icon(
+            iconData,
+            size: 28,
+          ),
+        ),
+      ),
+    ],
+  );
 }
