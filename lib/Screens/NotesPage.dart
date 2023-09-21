@@ -19,7 +19,7 @@ class NotesPage extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (context) {
-                return AddNoteBottomSheetWidget();
+                return const AddNoteBottomSheetWidget();
               });
         },
         child: const Icon(Icons.add),
@@ -40,7 +40,7 @@ class NotesPage extends StatelessWidget {
           ),
         ],
       ),
-      body: NotesBodyView(),
+      body: const NotesBodyView(),
     );
   }
 }

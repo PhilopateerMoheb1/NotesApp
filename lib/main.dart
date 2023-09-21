@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/Screens/EditPageView.dart';
 import 'package:notesapp/Screens/NotesPage.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class NotesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         NotesPage.id: (context) => const NotesPage(),
+        EditPageView.id: (context) => const EditPageView(),
       },
       initialRoute: NotesPage.id,
       theme: ThemeData(
