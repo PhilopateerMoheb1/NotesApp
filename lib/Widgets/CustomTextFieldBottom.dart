@@ -11,13 +11,21 @@ class CustomTextFieldBottomSheet extends StatelessWidget {
     super.key,
     this.hintText,
     this.maxLines = 1,
+    this.onSaved,
   });
   final String? hintText;
   final int? maxLines;
+  final Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return "Field is required";
+        }
+      },
+      onSaved: onSaved,
       textAlignVertical: TextAlignVertical.bottom,
       maxLines: maxLines,
       decoration: InputDecoration(

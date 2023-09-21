@@ -16,6 +16,7 @@ class AddNoteBottomSheetWidget extends StatelessWidget {
       child: TextFieldFormWidget(
         firstTextFieldHintText: "Title",
         secondTextFieldHintText: "Content",
+        textButton: "Add",
       ),
     );
   }
