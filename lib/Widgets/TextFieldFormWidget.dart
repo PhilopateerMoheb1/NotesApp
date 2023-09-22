@@ -1,4 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:notesapp/Cubits/AddNoteCubit/add_note_cubit_cubit.dart';
+import 'package:notesapp/Models/NotesModel.dart';
 import 'package:notesapp/Widgets/CustomTextFieldBottom.dart';
 import 'package:notesapp/constants.dart';
 
@@ -60,17 +64,32 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
           const SizedBox(
             height: 45,
           ),
-          CustomWideButton(
-            onTap: () {
-              if (formkey.currentState!.validate()) {
-                formkey.currentState!.save();
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+          BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
+            builder: (context, state) {
+              return CustomWideButton(
+                isloading: state is AddNoteCubitSuccess ? true : false,
+                onTap: () {
+                  if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
+                    NotesModel notesModel = NotesModel(
+                      title: title!,
+                      subTitle: subTitle!,
+                      date: DateFormat.yMMMEd()
+                          .format(
+                            DateTime.now(),
+                          )
+                          .toString(),
+                    );
+                    BlocProvider.of<AddNoteCubitCubit>(context)
+                        .addNote(notesModel);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                  }
+                },
+                buttonText: widget.textButton ?? " ",
+                backgroundColorButton: kprimayColor,
+              );
             },
-            buttonText: widget.textButton ?? " ",
-            backgroundColorButton: kprimayColor,
           )
         ],
       ),

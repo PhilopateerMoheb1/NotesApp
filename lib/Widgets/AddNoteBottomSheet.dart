@@ -10,25 +10,26 @@ class AddNoteBottomSheetWidget extends StatelessWidget {
   const AddNoteBottomSheetWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNoteCubitCubit(),
       child: BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
-        listener: (context, state) {
-          if (state is AddNoteCubitFailure) {
-          } else if (state is AddNoteCubitSuccess) {
-            Navigator.pop(context);
-          }
-        },
-        builder: (context, state) {
-          return ModalProgressHUD(
-            inAsyncCall: state is AddNoteCubitLoading ? true : false,
-            child: const TextFieldFormWidget(
+          listener: (context, state) {
+        if (state is AddNoteCubitFailure) {
+        } else if (state is AddNoteCubitSuccess) {
+          Navigator.pop(context);
+        }
+      }, builder: (context, state) {
+        return AbsorbPointer(
+          absorbing: state is AddNoteCubitLoading ? true : false,
+          child: const SingleChildScrollView(
+            child: TextFieldFormWidget(
               firstTextFieldHintText: "Title",
               secondTextFieldHintText: "Content",
               textButton: "Add",
             ),
-          );
-        },
-      ),
+          ),
+        );
+      }),
     );
   }
 }

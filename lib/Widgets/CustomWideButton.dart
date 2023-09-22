@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomWideButton extends StatelessWidget {
-  CustomWideButton({
+  const CustomWideButton({
     super.key,
     this.buttonText,
     this.onTap,
     this.backgroundColorButton,
+    this.isloading = false,
   });
-  String? buttonText;
-  VoidCallback? onTap;
+  final String? buttonText;
+  final VoidCallback? onTap;
   final Color? backgroundColorButton;
-
+  final bool isloading;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,13 +27,17 @@ class CustomWideButton extends StatelessWidget {
           height: 45,
           width: double.infinity,
           child: Center(
-              child: Text(
-            buttonText ?? " ",
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
-          )),
+              child: isloading
+                  ? const CircularProgressIndicator(
+                      color: Colors.black,
+                    )
+                  : Text(
+                      buttonText ?? " ",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    )),
         ),
       ),
     );

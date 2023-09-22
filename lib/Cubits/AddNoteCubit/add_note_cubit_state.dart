@@ -5,11 +5,16 @@ sealed class AddNoteCubitState {}
 
 final class AddNoteCubitInitial extends AddNoteCubitState {}
 
-final class AddNoteCubitLoading extends AddNoteCubitState {}
+final class AddNoteCubitLoading extends AddNoteCubitState {
+  final bool isLoading = true;
+}
 
-final class AddNoteCubitSuccess extends AddNoteCubitState {}
+final class AddNoteCubitSuccess extends AddNoteCubitState {
+  final bool isLoading = false;
+}
 
 final class AddNoteCubitFailure extends AddNoteCubitState {
+  final bool isLoading = false;
   final String? msg;
   AddNoteCubitFailure({
     this.msg,
