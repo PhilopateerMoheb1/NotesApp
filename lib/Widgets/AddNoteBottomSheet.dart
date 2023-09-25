@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notesapp/Cubits/AddNoteCubit/add_note_cubit_cubit.dart';
 import 'TextFieldFormWidget.dart';
 
@@ -21,11 +18,15 @@ class AddNoteBottomSheetWidget extends StatelessWidget {
       }, builder: (context, state) {
         return AbsorbPointer(
           absorbing: state is AddNoteCubitLoading ? true : false,
-          child: const SingleChildScrollView(
-            child: TextFieldFormWidget(
-              firstTextFieldHintText: "Title",
-              secondTextFieldHintText: "Content",
-              textButton: "Add",
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: const SingleChildScrollView(
+              child: TextFieldFormWidget(
+                firstTextFieldHintText: "Title",
+                secondTextFieldHintText: "Content",
+                textButton: "Add",
+              ),
             ),
           ),
         );

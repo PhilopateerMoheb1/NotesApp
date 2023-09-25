@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/Screens/EditPageView.dart';
 import 'package:notesapp/Widgets/NotesViewWidgetItem.dart';
 
 class NotesListView extends StatelessWidget {
