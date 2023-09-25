@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notesapp/Cubits/AddNoteCubit/add_note_cubit_cubit.dart';
@@ -30,6 +31,13 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
   String? subTitle;
 
   GlobalKey<FormState> formkey = GlobalKey();
+  final List<Color> colors = const [
+    Colors.red,
+    Colors.blue,
+    Colors.green,
+    Colors.purple,
+  ];
+  static int i = 0;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
@@ -72,6 +80,10 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
                 isloading: state is AddNoteCubitSuccess ? true : false,
                 onTap: () {
                   if (formkey.currentState!.validate()) {
+                    if (i == 4) {
+                      i = 0;
+                    }
+                    _TextFieldFormWidgetState.i++;
                     formkey.currentState!.save();
                     NotesModel notesModel = NotesModel(
                       title: title!,
@@ -81,6 +93,7 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
                             DateTime.now(),
                           )
                           .toString(),
+                      color: colors[i].value,
                     );
                     BlocProvider.of<AddNoteCubitCubit>(context)
                         .addNote(notesModel);

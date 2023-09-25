@@ -2,16 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:notesapp/Models/NotesModel.dart';
 
 class NotesItem extends StatelessWidget {
   const NotesItem({
     super.key,
-    required this.title,
-    required this.subtitle,
+    required this.notesModel,
   });
 
-  final String title;
-  final String? subtitle;
+  final NotesModel notesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class NotesItem extends StatelessWidget {
       children: [
         ListTile(
           title: Text(
-            title,
+            notesModel.title,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 26,
@@ -32,7 +31,7 @@ class NotesItem extends StatelessWidget {
               bottom: 10,
             ),
             child: Text(
-              subtitle ?? " ",
+              notesModel.subTitle,
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.black.withOpacity(.4),
@@ -45,7 +44,9 @@ class NotesItem extends StatelessWidget {
               size: 24,
               color: Colors.black,
             ),
-            onPressed: () {},
+            onPressed: () {
+              notesModel.delete();
+            },
           ),
         ),
         Padding(

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:notesapp/Models/NotesModel.dart';
 
 import '../Screens/EditPageView.dart';
 import 'NotesItem.dart';
@@ -10,14 +11,10 @@ import 'NotesItem.dart';
 class NotesViewWidgetItem extends StatelessWidget {
   const NotesViewWidgetItem({
     super.key,
-    required this.title,
-    this.subtitle,
-    this.color,
+    required this.notesModel,
   });
 
-  final String title;
-  final String? subtitle;
-  final Color? color;
+  final NotesModel notesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,7 @@ class NotesViewWidgetItem extends StatelessWidget {
         ),
         child: Container(
           decoration: BoxDecoration(
-            color: color ?? Colors.red,
+            color: Color(notesModel.color),
             borderRadius: const BorderRadius.all(
               Radius.circular(20),
             ),
@@ -46,7 +43,9 @@ class NotesViewWidgetItem extends StatelessWidget {
               bottom: 24,
               left: 16,
             ),
-            child: NotesItem(title: title, subtitle: subtitle),
+            child: NotesItem(
+              notesModel: notesModel,
+            ),
           ),
         ),
       ),
