@@ -11,7 +11,6 @@ import 'package:bloc/bloc.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(NotesModelAdapter());
-
   await Hive.openBox<NotesModel>(knotesBox);
   Bloc.observer = SimpleBlocObserver();
   final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
