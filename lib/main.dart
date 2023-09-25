@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notesapp/Cubits/GetNoteCubit/get_note_cubit.dart';
 import 'package:notesapp/Models/NotesModel.dart';
 import 'package:notesapp/Screens/EditPageView.dart';
 import 'package:notesapp/Screens/NotesPage.dart';
@@ -26,16 +27,19 @@ class NotesApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        NotesPage.id: (context) => const NotesPage(),
-        EditPageView.id: (context) => const EditPageView(),
-      },
-      initialRoute: NotesPage.id,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        brightness: Brightness.dark,
+    return BlocProvider(
+      create: (context) => GetNoteCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          NotesPage.id: (context) => const NotesPage(),
+          EditPageView.id: (context) => const EditPageView(),
+        },
+        initialRoute: NotesPage.id,
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+          brightness: Brightness.dark,
+        ),
       ),
     );
   }

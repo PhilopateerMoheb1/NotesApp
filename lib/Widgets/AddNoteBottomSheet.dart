@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/Cubits/AddNoteCubit/add_note_cubit_cubit.dart';
+import '../Cubits/GetNoteCubit/get_note_cubit.dart';
 import 'TextFieldFormWidget.dart';
 
 class AddNoteBottomSheetWidget extends StatelessWidget {
@@ -13,6 +14,7 @@ class AddNoteBottomSheetWidget extends StatelessWidget {
           listener: (context, state) {
         if (state is AddNoteCubitFailure) {
         } else if (state is AddNoteCubitSuccess) {
+          BlocProvider.of<GetNoteCubit>(context).fetchAllNotes();
           Navigator.pop(context);
         }
       }, builder: (context, state) {
