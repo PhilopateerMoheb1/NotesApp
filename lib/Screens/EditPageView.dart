@@ -1,24 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:notesapp/Widgets/EditForm.dart';
 import 'package:notesapp/Widgets/TextFieldFormWidget.dart';
 
+import '../Models/NotesModel.dart';
 import '../Widgets/CustomIcon.dart';
 
 class EditPageView extends StatelessWidget {
-  const EditPageView({super.key});
+  const EditPageView({super.key, this.note});
   static const String id = "Edit Page";
+  final NotesModel? note;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(
-        "Edit Page",
+        "Edit Note",
         Icons.done,
       ),
-      body: const TextFieldFormWidget(
+      body: EditForm(
+        notesModel: ModalRoute.of(context)!.settings.arguments as NotesModel,
         firstTextFieldHintText: "Title",
         secondTextFieldHintText: "Content",
-        textButton: "Add",
+        textButton: "Edit",
       ),
     );
   }
@@ -33,10 +37,8 @@ AppBar buildAppBar(String name, IconData iconData) {
       Padding(
         padding: const EdgeInsets.only(right: 20.0),
         child: CustomIcon(
-          icon: Icon(
-            iconData,
-            size: 28,
-          ),
+          iconData: iconData,
+          onPressed: () {},
         ),
       ),
     ],

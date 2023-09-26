@@ -53,7 +53,7 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: CustomTextFieldBottomSheet(
+            child: CustomTextField(
               hintText: widget.firstTextFieldHintText ?? " ",
               maxLines: 1,
               onSaved: (value) {
@@ -63,7 +63,7 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: CustomTextFieldBottomSheet(
+            child: CustomTextField(
               hintText: widget.secondTextFieldHintText ?? " ",
               maxLines: 5,
               onSaved: (value) {
@@ -80,7 +80,7 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
                 isloading: state is AddNoteCubitSuccess ? true : false,
                 onTap: () {
                   if (formkey.currentState!.validate()) {
-                    if (i == 4) {
+                    if (i == 3) {
                       i = 0;
                     }
                     _TextFieldFormWidgetState.i++;

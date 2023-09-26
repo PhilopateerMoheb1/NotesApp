@@ -4,25 +4,23 @@ import 'package:notesapp/Widgets/AddNoteBottomSheet.dart';
 
 import '../constants.dart';
 
-class CustomTextFieldBottomSheet extends StatelessWidget {
-  const CustomTextFieldBottomSheet({
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
     super.key,
     this.hintText,
     this.maxLines = 1,
     this.onSaved,
+    this.onChanged,
   });
   final String? hintText;
   final int? maxLines;
   final Function(String?)? onSaved;
+  final Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (value) {
-        if (value?.isEmpty ?? true) {
-          return "Field is required";
-        }
-      },
+      onChanged: onChanged,
       onSaved: onSaved,
       textAlignVertical: TextAlignVertical.bottom,
       maxLines: maxLines,

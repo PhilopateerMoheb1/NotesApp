@@ -23,6 +23,7 @@ class NotesViewWidgetItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           EditPageView.id,
+          arguments: notesModel,
         );
       },
       child: Padding(

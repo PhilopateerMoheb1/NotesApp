@@ -28,14 +28,12 @@ class NotesPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: const Text("Notes"),
         elevation: 0,
-        actions: const [
+        actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: CustomIcon(
-              icon: Icon(
-                Icons.search,
-                size: 28,
-              ),
+              iconData: Icons.search,
+              onPressed: () {},
             ),
           ),
         ],
