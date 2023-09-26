@@ -31,13 +31,6 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
   String? subTitle;
 
   GlobalKey<FormState> formkey = GlobalKey();
-  final List<Color> colors = const [
-    Colors.red,
-    Colors.blue,
-    Colors.green,
-    Colors.purple,
-  ];
-  static int i = 0;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
@@ -74,16 +67,16 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
           const SizedBox(
             height: 45,
           ),
+          const ColorListView(),
+          const SizedBox(
+            height: 20,
+          ),
           BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
             builder: (context, state) {
               return CustomWideButton(
                 isloading: state is AddNoteCubitSuccess ? true : false,
                 onTap: () {
                   if (formkey.currentState!.validate()) {
-                    if (i == 3) {
-                      i = 0;
-                    }
-                    _TextFieldFormWidgetState.i++;
                     formkey.currentState!.save();
                     NotesModel notesModel = NotesModel(
                       title: title!,
@@ -93,7 +86,7 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
                             DateTime.now(),
                           )
                           .toString(),
-                      color: colors[i].value,
+                      color: colors.value,
                     );
                     BlocProvider.of<AddNoteCubitCubit>(context)
                         .addNote(notesModel);

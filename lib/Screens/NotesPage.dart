@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notesapp/Cubits/GetNoteCubit/get_note_cubit.dart';
 import 'package:notesapp/Widgets/AddNoteBottomSheet.dart';
 
 import '../Widgets/CustomIcon.dart';
@@ -30,6 +28,7 @@ class NotesPage extends StatelessWidget {
         elevation: 0,
         actions: [
           Padding(
+            // ignore: prefer_const_constructors
             padding: EdgeInsets.only(right: 20.0),
             child: CustomIcon(
               iconData: Icons.search,

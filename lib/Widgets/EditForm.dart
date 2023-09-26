@@ -3,8 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
-import 'package:notesapp/Cubits/AddNoteCubit/add_note_cubit_cubit.dart';
 import 'package:notesapp/Cubits/GetNoteCubit/get_note_cubit.dart';
 import 'package:notesapp/Models/NotesModel.dart';
 import 'package:notesapp/Widgets/CustomTextFieldBottom.dart';
