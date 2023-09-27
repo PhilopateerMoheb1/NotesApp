@@ -9,6 +9,7 @@ import 'package:notesapp/Models/NotesModel.dart';
 import 'package:notesapp/Widgets/CustomTextFieldBottom.dart';
 import 'package:notesapp/constants.dart';
 
+import 'ColorsListView.dart';
 import 'CustomWideButton.dart';
 
 class TextFieldFormWidget extends StatefulWidget {
@@ -67,7 +68,7 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
           const SizedBox(
             height: 45,
           ),
-          const ColorListView(),
+          ColorListView(),
           const SizedBox(
             height: 20,
           ),
@@ -86,7 +87,9 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
                             DateTime.now(),
                           )
                           .toString(),
-                      color: colors.value,
+                      color: BlocProvider.of<AddNoteCubitCubit>(context)
+                          .color
+                          .value,
                     );
                     BlocProvider.of<AddNoteCubitCubit>(context)
                         .addNote(notesModel);

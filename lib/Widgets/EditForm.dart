@@ -3,9 +3,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notesapp/Cubits/AddNoteCubit/add_note_cubit_cubit.dart';
 import 'package:notesapp/Cubits/GetNoteCubit/get_note_cubit.dart';
 import 'package:notesapp/Models/NotesModel.dart';
+import 'package:notesapp/Widgets/ColorsListView.dart';
 import 'package:notesapp/Widgets/CustomTextFieldBottom.dart';
+import 'package:notesapp/Widgets/EditColorListView.dart';
 import 'package:notesapp/constants.dart';
 
 import 'CustomWideButton.dart';
@@ -57,6 +60,9 @@ class _EditFormState extends State<EditForm> {
             },
           ),
         ),
+        EditColorListView(
+          note: widget.notesModel,
+        ),
         const SizedBox(
           height: 45,
         ),
@@ -64,6 +70,7 @@ class _EditFormState extends State<EditForm> {
           onTap: () {
             widget.notesModel.title = title ?? widget.notesModel.title;
             widget.notesModel.subTitle = subTitle ?? widget.notesModel.subTitle;
+
             widget.notesModel.save();
             BlocProvider.of<GetNoteCubit>(context).fetchAllNotes();
             Navigator.pop(context);

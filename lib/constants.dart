@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 const Color kprimayColor = Color(0xff62fcd7);
 const String knotesBox = "notes 1";
-List<Color> colorList = [
+List<Color> kcolorList = [
   Colors.red,
   Colors.green,
   Colors.blue,
